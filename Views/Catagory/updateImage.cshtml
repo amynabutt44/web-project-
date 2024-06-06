@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Category Image</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link href="~/css/addproduct.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="card">
+        <div class="container">
+            <h2 class="mb-4">Update Category Image</h2>
+            <form action="/Catagory/UpdateImage" method="POST" enctype="multipart/form-data">
+
+                <div class="form-group">
+                    <label for="code">Enter Category ID:</label>
+                    <input type="text" class="form-control" id="code" name="code" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Upload New Category Image:</label>
+                    <input type="file" class="form-control-file" id="image" name="image" accept=".jpg, .jpeg, .png" required>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

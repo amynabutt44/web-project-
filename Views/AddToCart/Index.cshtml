@@ -1,0 +1,59 @@
+﻿@model List<product>
+
+@{
+    Layout = "_product_layout";
+    ViewBag.Title = "Products - zen skin care";
+}
+
+<style>
+    .card {
+        width: 80%;
+        margin-top: 20px;
+    }
+
+        .card .wp-post-image {
+            background-color: white;
+            height: 270px;
+            transition: opacity 0.3s;
+        }
+
+            .card .wp-post-image:hover {
+                opacity: 0.7;
+            }
+</style>
+
+<div class="container-fluid" style="margin-top: 70px">
+    <h1 style="text-align:center;font-style:cursive;color:blue;margin:20px;">
+        Our Products
+    </h1>
+    <div class="row" style="margin-left:20px;">
+        @foreach (var product in Model)
+        {
+            <div class="col-12 col-md-4">
+                <div class="card" style="margin-top: 20px;">
+
+                    <!-- Update the image source to use the PathOfImage property -->
+                    <img src="~/uploadedFiles/@product.image"
+                         class="scale-with-grid wp-post-image img-fluid"
+                         alt="" loading="lazy" data-toggle="modal" data-target="#productModal" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.name</h5>
+
+                        <a href="#" class="btn btn-success">@product.price</a>
+                        <!-- Add other product details as needed -->
+
+                        <form action="/AddToCart/Cart" method="post">
+                            <input type="hidden" name="id" value="@product.Id" />
+                            <div style="position: absolute; bottom: 10px; right: 15px; width: 40px; height: 40px; background-color: #FFBE33; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                                <button type="submit" style="background: none; border: none;">
+                                    <i class="fas fa-shopping-cart" style="color: white; font-size: 23px;"></i>
+                                </button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

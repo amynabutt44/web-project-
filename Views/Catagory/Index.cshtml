@@ -1,0 +1,42 @@
+﻿@model List<catagory>
+
+@{
+    Layout = "_product_layout";
+}
+
+
+<br />
+<br />
+<div class="container shop-category mt-4" id="sale">
+    <p class="display-6 shop-name text-center">Category</p>
+    <div class="row">
+        @foreach (var category in Model)
+        {
+            <div class="col-12 col-lg-3 col-xxl-3 col-xl-3 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                <div class="product-item text-center">
+                    <!-- Product Image with correct modal target -->
+                    <img src="~/uploadedfiles/@category.image"
+                         alt="@category.Name"
+                         class="img-fluid"
+                         style="height: 200px; object-fit: cover; object-position: center;"
+                         data-bs-toggle="modal"
+                         data-bs-target="#productModal@category.Id" />
+
+                    <!-- Product Details -->
+                    <div class="product-details mt-2">
+                        <div class="product-name">@category.Name</div>
+                        <div class="product-name"> code : @category.Id</div>
+
+                        <!-- Quick View Button with correct modal target -->
+                       
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

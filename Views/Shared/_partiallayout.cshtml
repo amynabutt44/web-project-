@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+
+    int maxProductsToShow = 8; // Variable to limit the number of products displayed
+    int productCount = 0;
+}
+
+
+
+<!-- Shop by category section -->
+<div class="container shop-category" id="sale">
+    <p class="display-6 shop-name" id="NEW-ARRIVAL"> NEW ARRIVALS </p>
+    <div class="row">
+        @foreach (var product in Model.product)
+        {
+            if (productCount >= maxProductsToShow)
+            {
+                break;
+            }
+            productCount++;
+
+            <div class="col-12 col-lg-3 col-xxl-3 col-xl-3 col-md-6 col-sm-12 mb-4">
+                <!-- Added mb-4 for bottom margin -->
+                <div class="product-item">
+                    <img src="@Url.Content("~/uploadedfiles/" + product.image)" alt="@product.name">
+                    <div class="product-details">
+                        <div class="product-name">@product.name</div>
+                        <div class="product-price">$@product.price</div>
+
+                        <form action="/AddToCart/Cart" method="post">
+                            <input type="hidden" name="productId" value="@product.Id">
+
+                            <button class="btn btn-primary add-to-cart"    style="">
+                              add to cart 
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+@foreach (var product in Model.product)
+{
+    string modalLink = "productModal" + product.Id;
+    <div class="modal fade" id="@modalLink" tabindex="-1" aria-labelledby="modalLabel@product.Id" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel@product.Id">@product.name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/uploadedfiles/@product.image"
+                                 alt="@product.name"
+                                 class="img-fluid"
+                                 style="height: 300px; object-fit: cover; object-position: center;" />
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Display Product Description -->
+                            <p><strong>ID:</strong> @product.Id</p>
+                            <p>@product.description</p>
+                            <p><strong>Price:</strong> $@product.price</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

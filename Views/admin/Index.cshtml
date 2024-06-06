@@ -1,0 +1,173 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Admin Panel - Zen Skin Care";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('/img/natural.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .admin-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+            .card h2 {
+                margin-top: 0;
+                font-size: 28px;
+                color: #28a745;
+            }
+
+            .card ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 20px 0 0 0;
+            }
+
+                .card ul li {
+                    margin-bottom: 20px;
+                }
+
+                    .card ul li a {
+                        display: block;
+                        padding: 10px;
+                        border: 2px solid #28a745;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        color: #28a745;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    }
+
+                        .card ul li a:hover {
+                            background-color: #28a745;
+                            color: #fff;
+                        }
+
+                        .card ul li a:focus {
+                            outline: none;
+                            background-color: #218838;
+                            color: #fff;
+                        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            color: #fff !important;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #d4edda !important;
+            }
+
+        .admin-title {
+            font-size: 24px;
+            color: #28a745;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success w-100">
+        <a class="navbar-brand" href="#">Zen Skin Care Admin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/allorders">View Orders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/products">View Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/products/add">Add Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Catagory">View Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Catagory/add">Add Category</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-title">
+        MANAGE PRODUCTS/CATEGORIES
+    </div>
+
+    <div class="admin-panel container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Products</h2>
+                    <ul>
+                        <li><a href="/products/add">Add Product</a></li>
+
+                        <li><a href="/admin/products">view Product</a></li>
+                        <li><a href="/products/update">Update Product</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h2>Categories</h2>
+                    <ul>
+                        <li><a href="/Catagory/add">Add Category</a></li>
+                        <li><a href="/Catagory/delete">Delete Category</a></li>
+                        <li><a href="/Catagory/updateImage">Update Category</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

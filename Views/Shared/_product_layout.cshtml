@@ -1,0 +1,172 @@
+﻿@{
+    var myList = ViewBag.MyList as List<catagory>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Skin Care</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-c29+4Gsp8uofnJcOD7rFSqNIsxHzF+x3Xdr8aVs0pbOaAsAuHb7T6yIVZErLhb72a8mZdCmNtQeLu0lAdw36Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/catagory.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-c29+4Gsp8uofnJcOD7rFSqNIsxHzF+x3Xdr8aVs0pbOaAsAuHb7T6yIVZErLhb72a8mZdCmNtQeLu0lAdw36Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        .website-name {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .zen-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .navbar-nav .dropdown-menu {
+            min-width: 200px;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .dropdown-item:hover {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+            .dropdown-item button {
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 0;
+                color: inherit;
+                text-align: left;
+            }
+
+                .dropdown-item button:hover {
+                    background: none;
+                    color: inherit;
+                }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            color: #666;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-transform: uppercase;
+        }
+
+        .footer-slogan {
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links .footer-link {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+            .footer-links .footer-link:hover {
+                color: #28a745;
+            }
+    </style>
+</head>
+
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top website-name">
+        <div class="container">
+            <a class="navbar-brand zen-name" href="/Home/Index">ZEN SKIN CARE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Home/Index">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Products
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @if (myList != null)
+                            {
+                                foreach (var item in myList)
+                                {
+                                    <form action="/products/allproduct" method="post" class="dropdown-item p-0 m-0">
+                                        <input type="hidden" name="name" value="@item.Name" />
+                                        <button type="submit">@item.Name</button>
+                                    </form>
+                                }
+                            }
+                        </div>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="/AddToCart/ViewCarts">
+                            <i class="fas fa-shopping-cart"></i> <span style="font-weight: bold;">Cart</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <partial name="_LoginPartial" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        @RenderBody();
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 footer-brand">Zen Skin Care</div>
+            </div>
+            <div class="row">
+                <div class="col-12 footer-slogan">YOUR BEAUTY MATTERS</div>
+            </div>
+            <div class="row footer-links justify-content-center">
+                <div class="col-auto"><a href="/Home/FAQ" class="footer-link">FAQ</a></div>
+                <div class="col-auto"><a href="/Home/refundpolicy" class="footer-link">Refund Policy</a></div>
+                <div class="col-auto"><a href="/Home/contactUs" class="footer-link">Contact Us</a></div>
+                <div class="col-auto"><a href="/Home/aboutUs" class="footer-link">About Us</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

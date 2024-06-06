@@ -1,0 +1,95 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register Confirmation";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem 3rem;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #28a745;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin: 1rem 0;
+            color: #555;
+        }
+
+        .button-link {
+            display: inline-block;
+            color: #fff;
+            background-color: #28a745;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 1rem;
+        }
+
+            .button-link:hover {
+                background-color: #218838;
+            }
+
+        .docs-link {
+            color: #28a745;
+            text-decoration: underline;
+        }
+
+            .docs-link:hover {
+                color: #1e7e34;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        @if (Model.DisplayConfirmAccountLink)
+        {
+            <p>
+                This app does not currently have a real email sender registered. See <a href="https://aka.ms/aspaccountconf" target="_blank" class="docs-link">these docs</a> for how to configure a real email sender.
+            </p>
+            <p>
+                Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl" class="button-link">Click here to confirm your account</a>
+            </p>
+        }
+        else
+        {
+            <p>
+                Please check your email to confirm your account.
+            </p>
+        }
+    </div>
+</body>
+</html>

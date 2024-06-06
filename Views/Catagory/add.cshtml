@@ -1,0 +1,123 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Serum</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* Custom CSS for Add Serum form */
+        body {
+            background-image: url('/img/natural.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            width: 400px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        /* Style for price input */
+        .input-group-prepend {
+            height: 38px;
+        }
+
+        .input-group-text {
+            background-color: #f8f9fa;
+            border-color: #ced4da;
+            color: #495057;
+        }
+
+        .form-control-file {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+            .form-control-file input[type="file"] {
+                display: none;
+            }
+
+            .form-control-file label {
+                cursor: pointer;
+                display: inline-block;
+                background-color: #007bff;
+                color: #fff;
+                padding: 6px 12px;
+                border-radius: 4px;
+                font-size: 0.875rem;
+                line-height: 1.5;
+                width: 100%;
+                text-align: center;
+            }
+
+            .form-control-file input[type="file"]:focus + label::after {
+                box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            }
+
+        .btn-submit {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="container">
+            <h2 class="mb-4">Add  catagory</h2>
+            <form action="/Catagory/add" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">catagory  Name:</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                
+              
+               
+                <div class="form-group">
+                    <label for="image">Upload Image:</label>
+                    <div class="form-control-file">
+                        <input class="btn btn-success btn-submit" type="file" id="image" name="image" accept="image/*" required>
+                        <label for="image" style="background-color: #28a745; color: #fff;">Choose File</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

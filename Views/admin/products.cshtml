@@ -1,0 +1,102 @@
+﻿@model List<product>
+
+@{
+    Layout = "_product_layout";
+    ViewBag.Title = "Products - zen skin care";
+}
+<br />
+<br />
+
+
+<div class="container shop-category mt-50px" id="sale" data-aos="fade-up" data-aos-duration="1500">
+    <br />
+    <!-- Heading with Add Product Button at the top right corner -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="display-6 shop-name mb-0" style="color: green; font-weight: bold;">Products</h2>
+        <a href="/products/add" class="btn btn-success btn-lg">
+            <i class="fas fa-plus"></i> Add Product
+        </a>
+    </div>
+
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            string modalLink = "productModal" + product.Id;
+            <div class="col-12 col-lg-3 col-xxl-3 col-xl-3 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                <div class="product-item text-center">
+                    <!-- Product Image with correct modal target -->
+                    <img src="~/uploadedfiles/@product.image"
+                         alt="@product.name"
+                         class="img-fluid"
+                         style="height: 200px; object-fit: cover; object-position: center;"
+                         data-bs-toggle="modal"
+                         data-bs-target="#@modalLink" />
+
+                    <!-- Product Details -->
+                    <div class="product-details mt-2">
+                        <div class="product-name">@product.name</div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-code">Code: @product.Id</div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="product-price">$@product.price</div>
+                            </div>
+                        </div>
+
+                        <!-- Update Button -->
+                        <form action="/products/update" method="get" style="display: inline;">
+                            <input type="hidden" name="id" value="@product.Id" />
+                            <button type="submit" class="btn btn-outline-warning btn-update">Update</button>
+                        </form>
+
+                        <!-- Delete Button -->
+                        <form action="/products/delete" method="post" style="display: inline;">
+                            <input type="hidden" name="id" value="@product.Id" />
+                            <button type="submit" class="btn btn-outline-danger btn-delete">Delete</button>
+                        </form>
+                        <!-- Add to Cart Button -->
+                        <!-- Quick View Button with correct modal target -->
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Product Modals for Quick View -->
+@foreach (var product in Model)
+{
+    string modalLink = "productModal" + product.Id;
+    <div class="modal fade" id="@modalLink" tabindex="-1" aria-labelledby="modalLabel@product.Id" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel@product.Id">@product.name</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="~/uploadedfiles/@product.image"
+                                 alt="@product.name"
+                                 class="img-fluid"
+                                 style="height: 300px; object-fit: cover; object-position: center;" />
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Display Product Description -->
+
+                            <p>@product.description</p>
+                            <p><strong>Price:</strong> $@product.price</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

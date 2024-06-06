@@ -1,0 +1,212 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Sign Up";
+    Layout = null;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+    /* Styles here */
+
+
+    .bg-dark-blue {
+        /*background: url('~/img/natural.webp')*/ no-repeat center center;
+        background-image: url('/img/natural.webp');
+        /* Skin care-themed background image */
+        background-size: cover; /* Cover the entire page */
+        height: 100vh; /* Full viewport height */
+        display: flex; /* Flex layout for centering */
+        justify-content: center;
+        align-items: center;
+        position: relative; /* For overlay purposes */
+        padding: 0; /* No padding to avoid overflow */
+        margin: 0; /* No margin to avoid overflow */
+    }
+
+    .bg-overlay {
+        position: absolute; /* Create an overlay to enhance text readability */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 26, 46, 0.6); /* Dark overlay with some transparency */
+    }
+
+    .register-card {
+        z-index: 2; /* Ensure card is on top of the overlay */
+        background: rgba(255, 255, 255, 0.85); /* White background with transparency */
+        border-radius: 10px; /* Rounded corners */
+        padding: 30px; /* Sufficient padding */
+        box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions for interactivity */
+        width: 560px; /* Increased width for larger content */
+        height: auto; /* Auto-height for better content fit */
+        overflow-y: hidden; /* No scrollbar within the card */
+    }
+
+        .register-card:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+        }
+
+    .form-control {
+        background-color: #f7f7f7; /* Light grey background for input fields */
+    }
+
+        .form-control:focus {
+            border-color: #28a745; /* Green border color on focus */
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.2); /* Light glow on focus */
+        }
+
+    .btn-primary {
+        background-color: #28a745; /* Green background for Register button */
+        border-color: #28a745;
+    }
+
+        .btn-primary:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+
+    .form-label {
+        font-weight: bold; /* Make labels bold */
+        text-align: center; /* Center-align labels */
+        display: block; /* Ensure proper display */
+    }
+
+    .input-group-text {
+        background-color: #f7f7f7; /* Same background as input fields */
+        border: none; /* No border for the icon container */
+        color: #28a745; /* Green color for the icons */
+    }
+
+    .eye-icon {
+        cursor: pointer; /* Cursor changes to pointer on hover */
+    }
+</style>
+
+<div class="bg-dark-blue">
+    <div class="bg-overlay"></div>
+    <div class="register-card">
+        <div class="text-center mb-4">
+            <h2>Create Your Account</h2>
+            <p>Sign up with your email and password, or use an external service.</p>
+        </div>
+
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Input.firstname" class="form-label">First Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input asp-for="Input.firstname" class="form-control" autocomplete="name" />
+                    </div>
+                    <span asp-validation-for="Input.firstname" class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label asp-for="Input.lastname" class="form-label">Last Name</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                        <input asp-for="Input.lastname" class="form-control" autocomplete="name" />
+                    </div>
+                    <span asp-validation-for="Input.lastname" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Input.city" class="form-label">City</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                        <input asp-for="Input.city" class="form-control" autocomplete="address-level2" />
+                    </div>
+                    <span asp-validation-for="Input.city" class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label asp-for="Input.country" class="form-label">Country</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                        <input asp-for="Input.country" class="form-control" autocomplete="country" />
+                    </div>
+                    <!-- Add validation message if needed -->
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                        <input asp-for="Input.Email" class="form-control" autocomplete="email" />
+                    </div>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Input.Password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input asp-for="Input.Password" type="password" class="form-control" autocomplete="new-password" />
+                        <span class="input-group-text eye-icon" onclick="togglePassword()">
+                            <i class="bi bi-eye"></i>
+                        </span>
+                    </div>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="col">
+                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirm Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                        <input asp-for="Input.ConfirmPassword" type="password" class="form-control" autocomplete="new-password" />
+                        <span class="input-group-text eye-icon" onclick="toggleConfirmPassword()">
+                            <i class="bi bi-eye"></i>
+                        </span>
+                    </div>
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        // Toggle password visibility functions
+        function togglePassword() {
+            var passwordField = document.querySelector('input[asp-for="Input.Password"]');
+            var icon = passwordField.nextElementSibling.querySelector('i');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.className = "bi bi-eye-slash";
+            } else {
+                passwordField.type = "password";
+                icon.className = "bi bi-eye";
+            }
+        }
+
+        function toggleConfirmPassword() {
+            var confirmPasswordField = document.querySelector('input[asp-for="Input.ConfirmPassword"]');
+            var icon = confirmPasswordField.nextElementSibling.querySelector('i');
+            if (confirmPasswordField.type === "password") {
+                confirmPasswordField.type = "text";
+                icon.className = "bi bi-eye-slash";
+            } else {
+                confirmPasswordField.type = "password";
+                icon.className = "bi bi-eye";
+            }
+        }
+    </script>
+}

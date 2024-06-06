@@ -1,0 +1,38 @@
+﻿@model WebApplication2.Models.Orderr
+
+@{
+    Layout = "_product_layout";
+    ViewBag.Title = "Order Confirmation";
+}
+
+<br />
+
+<br />
+<h2 class="text-center mt-4">Order Confirmation</h2>
+
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h4>Order Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <dt class="col-sm-3">Order ID</dt>
+                <dd class="col-sm-9">@Model.Id</dd>
+
+
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">@Model.Address</dd>
+
+                <dt class="col-sm-3">Phone Number</dt>
+                <dd class="col-sm-9">@Model.PhoneNumber</dd>
+
+                <dt class="col-sm-3">Total Amount</dt>
+                <dd class="col-sm-9">@Model.TotalAmount.ToString("C")</dd>
+
+                <dt class="col-sm-3">Order Date</dt>
+                <dd class="col-sm-9">@Model.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+            </dl>
+        </div>
+    </div>
+</div>

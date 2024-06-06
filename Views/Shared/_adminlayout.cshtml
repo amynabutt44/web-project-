@@ -1,0 +1,254 @@
+﻿@{
+    var myList = ViewBag.MyList as List<catagory>;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zen Skin Care</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-c29+4Gsp8uofnJcOD7rFSqNIsxHzF+x3Xdr8aVs0pbOaAsAuHb7T6yIVZErLhb72a8mZdCmNtQeLu0lAdw36Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/css/catagory.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-c29+4Gsp8uofnJcOD7rFSqNIsxHzF+x3Xdr8aVs0pbOaAsAuHb7T6yIVZErLhb72a8mZdCmNtQeLu0lAdw36Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+    <style>
+        .website-name {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .zen-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        .navbar-nav .dropdown-menu {
+            min-width: 200px;
+            padding: 0;
+            border-radius: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .dropdown-item:hover {
+                background-color: #28a745;
+                color: #fff;
+            }
+
+            .dropdown-item button {
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 0;
+                color: inherit;
+                text-align: left;
+            }
+
+                .dropdown-item button:hover {
+                    background: none;
+                    color: inherit;
+                }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 40px 0;
+            border-top: 1px solid #dee2e6;
+            text-align: center;
+            color: #666;
+        }
+
+        .footer-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-transform: uppercase;
+        }
+
+        .footer-slogan {
+            font-size: 16px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links .footer-link {
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+            .footer-links .footer-link:hover {
+                color: #28a745;
+            }
+
+
+
+        body {
+            background-image: url('/img/natural.webp');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            color: #333;
+            flex-direction: column;
+        }
+
+        .admin-panel {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+            .card h2 {
+                margin-top: 0;
+                font-size: 28px;
+                color: #28a745;
+            }
+
+            .card ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 20px 0 0 0;
+            }
+
+                .card ul li {
+                    margin-bottom: 20px;
+                }
+
+                    .card ul li a {
+                        display: block;
+                        padding: 10px;
+                        border: 2px solid #28a745;
+                        border-radius: 5px;
+                        text-decoration: none;
+                        color: #28a745;
+                        font-weight: bold;
+                        transition: all 0.3s ease;
+                    }
+
+                        .card ul li a:hover {
+                            background-color: #28a745;
+                            color: #fff;
+                        }
+
+                        .card ul li a:focus {
+                            outline: none;
+                            background-color: #218838;
+                            color: #fff;
+                        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: bold;
+            color: #fff !important;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #d4edda !important;
+            }
+
+        .admin-title {
+            font-size: 24px;
+            color: #28a745;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 100%;
+        }
+    </style>
+</head>
+
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success w-100">
+    <a class="navbar-brand" href="#">Zen Skin Care Admin</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/allorders">View Orders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/products">View Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/add">Add Product</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Catagory">View Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Catagory/add">Add Category</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+
+<body>
+
+    <div>
+        @RenderBody();
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 footer-brand">Zen Skin Care</div>
+            </div>
+            <div class="row">
+                <div class="col-12 footer-slogan">YOUR BEAUTY MATTERS</div>
+            </div>
+            <div class="row footer-links justify-content-center">
+                <div class="col-auto"><a href="/Home/refundpolicy" class="footer-link">Refund Policy</a></div>
+                <div class="col-auto"><a href="/Home/contactUs" class="footer-link">Contact Us</a></div>
+                <div class="col-auto"><a href="/Home/aboutUs" class="footer-link">About Us</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

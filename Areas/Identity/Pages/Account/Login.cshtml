@@ -1,0 +1,105 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Log in";
+    Layout = null;
+}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+    .bg-dark-blue {
+        background-image: url('/img/natural.webp'); /* Background image */
+        background-size: cover; /* Ensure the image covers the entire viewport */
+        background-position: center; /* Center the image */
+        height: 100vh; /* Full viewport height */
+        display: flex; /* Flex layout for centering */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+        position: relative; /* For overlay purposes */
+    }
+
+    .bg-overlay {
+        position: absolute; /* Create an overlay for text readability */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(26, 26, 46, 0.6); /* Dark overlay with transparency */
+    }
+
+    .login-card {
+        z-index: 2; /* Ensure card is on top of the overlay */
+        background: rgba(255, 255, 255, 0.85); /* White background with transparency */
+        border-radius: 10px; /* Rounded corners */
+        padding: 30px; /* Padding */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Soft shadow */
+        width: 400px; /* Set a fixed width for the card */
+        transition: transform 0.2s, box-shadow 0.2s; /* Smooth transitions */
+    }
+
+        .login-card:hover {
+            transform: scale(1.02); /* Slight zoom on hover */
+            box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+        }
+
+    .btn-primary {
+        background-color: #28a745; /* Green background */
+        border-color: #28a745;
+    }
+
+        .btn-primary:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+</style>
+
+<div class="bg-dark-blue">
+    <div class="bg-overlay"></div>
+
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <h2>Log in</h2>
+            <p>Welcome! Please log in to access your account.</p>
+        </div>
+
+        <form id="login-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" type="password" class="form-control" autocomplete="current-password" placeholder="Password" />
+                <label asp-for="Input.Password">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input class="form-check-input" asp-for="Input.RememberMe" />
+                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                </label>
+            </div>
+
+            <button type="submit" class="w-100 btn btn-primary">Log in</button>
+        </form>
+
+        <div class="text-center mt-3">
+
+            <p>
+            <p>
+                Don't have an account? <a href="/Identity/Account/Register" class="text-decoration-none  text-success">Sign up</a>
+            </p>
+
+            </p>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

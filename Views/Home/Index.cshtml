@@ -1,0 +1,71 @@
+﻿@model WebApplication2.Models.viewmodel.Catagoryproduct
+@{
+    ViewData["Title"] = "Home Page";
+
+    int maxProductsToShow = 12; // Variable to limit the number of products displayed
+    int productCount = 0;
+}
+
+
+
+
+    <!-- Modal structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalContent"></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="~/img/COURSAL IMAGE.webp" class="d-block" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="slide-bar">We deliver fine quality serums</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/img/red.webp" class="d-block" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="slide-bar">Our products use natural organic stuff</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="~/img/hand_and_foot_cream_copy.webp" class="d-block" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p class="slide-bar">We deliver on time</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="container shop-category" id="shop-by-cat">
+        <p class="display-6 shop-name"> Our Categories</p>
+        <div class="row">
+            @foreach (var category in Model.c)
+            {
+                <div class="col-12 col-lg-3 col-xxl-3 col-xl-3 col-md-6 col-sm-12">
+                    <div class="product-item">
+                       
+                            <img src="@Url.Content("~/uploadedfiles/" + category.image)" alt="@category.Name">
+                        
+                        <div class="products/@category.Name.ToLower().Replace(" ", "")">@category.Name</div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+       <partial name="_partiallayout" ,model="Model.product" ; />            
+
